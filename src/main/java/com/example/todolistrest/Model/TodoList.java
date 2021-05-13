@@ -9,6 +9,8 @@ public class TodoList {
     private Date date;
     private String title;
 
+    public TodoList(){}
+
     public TodoList(int todo_no, String owner, String description, Date date, String title) {
         this.todo_no = todo_no;
         this.owner = owner;

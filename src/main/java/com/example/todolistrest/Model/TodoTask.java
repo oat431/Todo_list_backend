@@ -7,6 +7,8 @@ public class TodoTask {
     private String description;
     private int status;
 
+    public TodoTask(){}
+
     public TodoTask(int task_no, int todo_no, String task, String description, int status) {
         this.task_no = task_no;
         this.todo_no = todo_no;
