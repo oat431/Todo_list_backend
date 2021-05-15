@@ -30,4 +30,43 @@ public class TodoListRepo {
             return todo;
         }
     }
+
+    public List<TodoList> allTodoList(){
+        return jdbcTemplate.query("Select * From todo_list",new TodoListMapper());
+    }
+
+    public Optional<TodoList> TodoListDetailById(long todo_no){
+        return Optional.ofNullable(jdbcTemplate.queryForObject(
+                "Select * From todo_list Where Todo_no=?",
+                new Object[] {todo_no},
+                new BeanPropertyRowMapper<TodoList>(TodoList.class)
+        ));
+    }
+
+    public int addTodoList(TodoList todoList){
+        return jdbcTemplate.update("insert into todo_list(Owner,Description,date,Title) value(?,?,?,?)",
+                new Object[]{
+                        todoList.getOwner(),todoList.getDescription(),todoList.getDate(),todoList.getTitle()
+        });
+    }
+
+    public int updateTodoList(TodoList todoList){
+        return jdbcTemplate.update(
+            "Update todo_list set Title=?,Description=?,date=? Where Todo_no=?",
+            new Object[] {
+                todoList.getTitle(),todoList.getDescription(),todoList.getTodo_no()
+        });
+    }
+
+    public int deleteTodoList(TodoList todoList){
+        deleteAllTaskByTodoList(todoList.getTodo_no());
+        return jdbcTemplate.update(
+                "Delete From todo_list where Todo_no=?",
+                new Object[] {todoList.getTodo_no()}
+        );
+    }
+
+   private int deleteAllTaskByTodoList(long todo_no){
+        return jdbcTemplate.update("Delete From todo_task where Todo_no=?",new Object[]{todo_no});
+   }
 }

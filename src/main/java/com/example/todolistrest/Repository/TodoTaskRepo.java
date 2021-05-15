@@ -30,4 +30,46 @@ public class TodoTaskRepo {
             return todoTask;
         }
     }
+
+    public Optional<TodoTask> findTaskById(Long Task_no){
+        return Optional.ofNullable(jdbcTemplate.queryForObject(
+            "Select * from todo_task where Task_no=?",
+                new Object[]{Task_no},
+                new BeanPropertyRowMapper<TodoTask>(TodoTask.class)
+        ));
+    }
+
+    public int addTodoTask(TodoTask todoTask,long todo_no){
+        return jdbcTemplate.update(
+                "Insert into todo_task(Todo_no,Task,Description)",
+                new Object[]{
+                        todo_no,todoTask.getTask(),todoTask.getDescription()
+                }
+        );
+    }
+
+    public List<TodoTask> getAllTaskByTodoList(long todo_no){
+        return jdbcTemplate.query(
+                "Select * from todo_task where Todo_no=?",new Object[]{todo_no},new TodoTaskMapper()
+        );
+    }
+
+    public int update(TodoTask todoTask,long todo_no){
+        return jdbcTemplate.update(
+                "update todo_task set Task=?,Description=? where Todo_no=? and Task_no=?",
+                new Object[]{
+                    todoTask.getTask(),todoTask.getDescription(),todo_no,todoTask.getTask_no()
+                });
+    }
+
+    public int deleteTask(TodoTask todoTask){
+        return jdbcTemplate.update("Delete from todo_task where Task_no=?",new Object[]{todoTask.getTask_no()});
+    }
+
+    public int updateStatus(TodoTask todoTask,boolean status,long todo_no){
+        return jdbcTemplate.update(
+                "Update todo_task set Status=? where Todo_no=? and Task_no=?",
+                new Object[]{status?1:0,todo_no,todoTask.getTask_no()
+                });
+    }
 }
