@@ -56,4 +56,15 @@ public class TodoTask {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "TodoTask{" +
+                "task_no=" + task_no +
+                ", todo_no=" + todo_no +
+                ", task='" + task + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

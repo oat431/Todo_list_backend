@@ -58,4 +58,15 @@ public class TodoList {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        return "TodoList{" +
+                "todo_no=" + todo_no +
+                ", owner='" + owner + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
