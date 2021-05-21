@@ -35,6 +35,8 @@ public class TodoListController {
         TodoList updateTodoList = todoListRepo.TodoListDetailById(todo_no).orElseThrow(()->new ResourceNotFound("don't have this todo please check again"));
         updateTodoList.setTitle(updateData.getTitle());
         updateTodoList.setDescription(updateData.getDescription());
+        updateTodoList.setDate(updateData.getDate());
+        System.out.println(updateTodoList.toString());
         return ResponseEntity.ok(todoListRepo.updateTodoList(updateTodoList));
     }
 
