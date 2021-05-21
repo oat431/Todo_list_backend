@@ -26,7 +26,7 @@ public class TodoListRepo {
             todo.setTitle(resultSet.getString("Title"));
             todo.setDescription(resultSet.getString("Description"));
             todo.setOwner(resultSet.getString("Owner"));
-            todo.setDate(resultSet.getDate("Date"));
+            todo.setDate(resultSet.getDate("Dates"));
             return todo;
         }
     }
@@ -44,17 +44,20 @@ public class TodoListRepo {
     }
 
     public int addTodoList(TodoList todoList){
-        return jdbcTemplate.update("insert into todo_list(Owner,Description,date,Title) value(?,?,?,?)",
+        return jdbcTemplate.update(
+                "Insert into todo_list (Owner,Description,dates,Title) values(?,?,?,?)",
                 new Object[]{
                         todoList.getOwner(),todoList.getDescription(),todoList.getDate(),todoList.getTitle()
-        });
+                }
+        );
     }
 
     public int updateTodoList(TodoList todoList){
+        System.out.println(todoList.toString());
         return jdbcTemplate.update(
-            "Update todo_list set Title=?,Description=?,date=? Where Todo_no=?",
+            "Update todo_list set Description=?,dates=?, Title=? Where Todo_no=?",
             new Object[] {
-                todoList.getTitle(),todoList.getDescription(),todoList.getTodo_no()
+                todoList.getDescription(),todoList.getDate(),todoList.getTitle(),todoList.getTodo_no()
         });
     }
 

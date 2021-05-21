@@ -39,22 +39,22 @@ public class TodoTaskRepo {
         ));
     }
 
-    public int addTodoTask(TodoTask todoTask,long todo_no){
+    public int addTodoTask(TodoTask todoTask,Long todo_no){
         return jdbcTemplate.update(
-                "Insert into todo_task(Todo_no,Task,Description)",
+                "Insert into todo_task (Todo_no,Task,Description) values(?,?,?)",
                 new Object[]{
                         todo_no,todoTask.getTask(),todoTask.getDescription()
                 }
         );
     }
 
-    public List<TodoTask> getAllTaskByTodoList(long todo_no){
+    public List<TodoTask> getAllTaskByTodoList(Long todo_no){
         return jdbcTemplate.query(
                 "Select * from todo_task where Todo_no=?",new Object[]{todo_no},new TodoTaskMapper()
         );
     }
 
-    public int update(TodoTask todoTask,long todo_no){
+    public int update(TodoTask todoTask,Long todo_no){
         return jdbcTemplate.update(
                 "update todo_task set Task=?,Description=? where Todo_no=? and Task_no=?",
                 new Object[]{
@@ -66,7 +66,7 @@ public class TodoTaskRepo {
         return jdbcTemplate.update("Delete from todo_task where Task_no=?",new Object[]{todoTask.getTask_no()});
     }
 
-    public int updateStatus(TodoTask todoTask,boolean status,long todo_no){
+    public int updateStatus(TodoTask todoTask,boolean status,Long todo_no){
         return jdbcTemplate.update(
                 "Update todo_task set Status=? where Todo_no=? and Task_no=?",
                 new Object[]{status?1:0,todo_no,todoTask.getTask_no()
