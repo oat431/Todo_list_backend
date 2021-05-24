@@ -21,4 +21,4 @@ This repo mainly use spring boot with hibernate and mysql todo a rest api
 
 #### thank you
 
-;&copy Flower Oralita Panomete
+&copy; Flower Oralita Panomete
