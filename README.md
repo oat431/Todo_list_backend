@@ -9,11 +9,13 @@ This repo mainly use spring boot with hibernate and mysql todo a rest api
 
 3 go to resource>application.properties.example and rename it to application.properties
 
-4 go back to repo folder (/Todo_list_backend)
+4 change path to your database location and set username and password
 
-5 run project by this command `mvnw spring-boot:run`
+5 go back to repo folder (/Todo_list_backend)
 
-6 the application will run on port 5039 (you can also change the port in the application.properties)
+6 run project by this command `mvnw spring-boot:run`
+
+7 the application will run on port 5039 (you can also change the port in the application.properties)
 
 - if there is some issue please open the issue on this repo. I test a little bit of it. but not all of it
 
