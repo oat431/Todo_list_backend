@@ -1,13 +1,13 @@
 # Todo_list_backend
-This repo mainly use spring boot with hibernate and mysql todo a rest api
+This repo mainly use spring boot with hibernate and MySQL todo a RESTful API
 
 ## To try this project
 
-1 download database file and import to your database (the database file is in wiki page of this repository)
+1 download database file and import to your database (the database file is on the wiki page of this repository)
 
 2 clone this repo
 
-3 go to resource>application.properties.example and rename it to application.properties
+3 go-to resource>application.properties.example and rename it to application.properties
 
 4 change path to your database location and set username and password
 
@@ -15,11 +15,11 @@ This repo mainly use spring boot with hibernate and mysql todo a rest api
 
 6 run project by this command `mvnw spring-boot:run`
 
-7 the application will run on port 5039 (you can also change the port in the application.properties)
+7 the application will run on port 5039 (you can also change the port in the application. properties)
 
-- if there is some issue please open the issue on this repo. I test a little bit of it. but not all of it
+- if there is some issue, please open the issue on this repo. I test a little bit of it. but not all of it
 
-- all of the api end point will also be in the wiki page of this repo too
+- all of the API endpoints will also be on the wiki page of this repo too
 
 #### thank you
 
